@@ -10,9 +10,13 @@ I work on enterprise software, APIs and distributed systems. My focus is maintai
 
 My primary public technical project: a .NET 10 reference implementation exploring enterprise case modernization.
 
-**Foundation / Phase 0:** a small ASP.NET Core API, an intentionally empty domain boundary, two in-memory integration tests, CI and architecture decision records. Azure deployment, event-driven integration and AI-assisted workflows are planned future capabilities.
+**Phase 3: durable local case workflow.** Create, browse, retrieve and progress synthetic cases through an ASP.NET Core API backed by SQLite. Browsing supports status filters and bounded pagination; committed cases survive API restart with the same intact store.
 
-[Explore the code](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/src) · [Review the tests](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/tests/EnterpriseCaseIntelligence.Api.Tests) · [Read the architecture decisions](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/docs/adr)
+Domain unit tests, HTTP/SQLite integration tests and process-recovery tests cover the workflow. CI checks formatting, Release builds and tests; architecture decision records explain the design choices.
+
+This is a local demonstration using one API process and one SQLite file, with synthetic data only. Authentication, Azure deployment, event-driven integration and AI-assisted workflows remain future capabilities.
+
+[Try the local workflow](https://github.com/shivamchopra/enterprise-case-intelligence/blob/main/docs/usage/local-case-workflow.md) · [Explore the code](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/src) · [Review the tests](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/tests) · [Read the architecture decisions](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/docs/adr)
 
 ## Current Focus
 
