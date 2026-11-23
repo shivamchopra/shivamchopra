@@ -8,19 +8,13 @@ I work on enterprise software, APIs and distributed systems. My focus is maintai
 
 ### [Enterprise Case Intelligence](https://github.com/shivamchopra/enterprise-case-intelligence)
 
-My primary public technical project: a .NET 10 reference implementation exploring enterprise case modernization.
+I built this .NET 10 reference application to explore how a case moves from intake to closure. In the ASP.NET Core workspace, you can find a synthetic case, set its priority and move it through review. Once it closes, a deterministic brief cites the case status and the history entry that records when it closed.
 
-**EF Core Code First · durable, retry-safe case workflow.** Create, browse, retrieve and progress synthetic cases through an ASP.NET Core API backed by SQLite, with status filters and bounded pagination. Case changes and recorded history commit together and survive API restart with the same intact store.
+EF Core Code First and SQLite keep case changes and their status history together. If a client loses the creation response, it can retry with the same key and recover the original result. A separate records intake command pulls closures from the local demo and saves receipts and a checkpoint in its own SQLite file, so the next run can resume where it stopped.
 
-Optional durable creation keys let a client recover the original creation result after a lost response or restart, without creating another case. Retrieving the case shows its current status.
+You can run the demo locally or configure OpenID Connect for Reader and Caseworker access. I verified both roles and session revocation locally with Microsoft Entra. Public hosting remains pending while I assess whether the deployment can run at $0 recurring out-of-pocket cost.
 
-C# models, Fluent API and scaffolded EF migrations define new schema. Explicit offline upgrades preserve retained cases, histories and creation keys. Older cases without history receive clearly labeled baselines; their earlier transitions are not reconstructed.
-
-Domain unit tests, HTTP/SQLite integration tests and process-recovery tests cover the workflow, atomic writes and interrupted upgrades. CI checks formatting, Release builds, EF model/migration consistency and tests; architecture decision records explain the design choices.
-
-This is a local demonstration using one API process and one SQLite file, with synthetic data only. Authentication, Azure deployment, event-driven integration and AI-assisted workflows remain future capabilities.
-
-[Try the local workflow](https://github.com/shivamchopra/enterprise-case-intelligence/blob/main/docs/usage/local-case-workflow.md) · [Explore the code](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/src) · [Review the tests](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/tests) · [Read the architecture decisions](https://github.com/shivamchopra/enterprise-case-intelligence/tree/main/docs/adr)
+[Try the browser workflow](https://github.com/shivamchopra/enterprise-case-intelligence/blob/main/docs/usage/local-case-workflow.md#browser-workspace) · [Run the records intake](https://github.com/shivamchopra/enterprise-case-intelligence/blob/main/docs/usage/local-records-intake.md) · [Explore the implementation and tests](https://github.com/shivamchopra/enterprise-case-intelligence#current-implemented-scope)
 
 ## Current Focus
 
